@@ -1,0 +1,141 @@
+<?xml version="1.0"?>
+<robot name="tars_miller_planet">
+
+  <material name="black"><color rgba="0.1 0.1 0.1 1"/></material>
+  <material name="glow_green"><color rgba="0 1 0.2 1"/></material>
+  <material name="ship_grey"><color rgba="0.6 0.6 0.6 1"/></material>
+  <material name="water_blue"><color rgba="0.0 0.3 0.6 0.6"/></material>
+  <material name="wave_blue"><color rgba="0.0 0.2 0.4 1.0"/></material>
+  <material name="sky_blue"><color rgba="0.7 0.9 1.0 1.0"/></material>
+
+  <link name="world"/>
+
+  <link name="base_link"/>
+
+  <joint name="world_to_tars" type="fixed">
+    <parent link="world"/><child link="base_link"/>
+    <origin xyz="0 0 1.0" rpy="0 0 0"/>
+  </joint>
+
+  <link name="block_1">
+    <visual>
+      <geometry><box size="0.2 0.15 1.0"/></geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+  <joint name="joint_block_1" type="continuous">
+    <parent link="base_link"/>
+    <child link="block_1"/>
+    <origin xyz="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <link name="block_2">
+    <visual>
+      <geometry><box size="0.2 0.15 1.0"/></geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+
+  <joint name="joint_block_2" type="continuous">
+    <parent link="base_link"/>
+    <child link="block_2"/>
+    <origin xyz="0 -0.15 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <link name="block_3">
+    <visual>
+      <geometry><box size="0.2 0.15 1.0"/></geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+
+  <joint name="joint_block_3" type="continuous">
+    <parent link="base_link"/>
+    <child link="block_3"/>
+    <origin xyz="0 -0.3 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <link name="block_4">
+    <visual>
+      <geometry><box size="0.2 0.15 1.0"/></geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+
+  <joint name="joint_block_4" type="continuous">
+    <parent link="base_link"/>
+    <child link="block_4"/>
+    <origin xyz="0 -0.45 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <link name="screen">
+    <visual><geometry><box size="0.01 0.2 0.1"/></geometry><material name="glow_green"/></visual>
+  </link>
+  <joint name="base_to_screen" type="fixed">
+    <parent link="base_link"/><child link="screen"/>
+    <origin xyz="0.101 -0.22 0.3"/>
+  </joint>
+
+  <link name="ocean">
+    <visual><geometry><cylinder length="0.01" radius="50.0"/></geometry><material name="water_blue"/></visual>
+  </link>
+  <joint name="world_to_ocean" type="fixed">
+    <parent link="world"/><child link="ocean"/>
+    <origin xyz="0 0 0.01"/>
+  </joint>
+
+  <link name="wave1">
+    <visual><geometry><box size="5 60 20"/></geometry><material name="wave_blue"/></visual>
+  </link>
+  <joint name="w_to_wave1" type="fixed">
+    <parent link="world"/><child link="wave1"/>
+    <origin xyz="-30 0 10"/>
+  </joint>
+
+  <link name="wave2">
+    <visual><geometry><box size="5 60 25"/></geometry><material name="wave_blue"/></visual>
+  </link>
+  <joint name="w_to_wave2" type="fixed">
+    <parent link="world"/><child link="wave2"/>
+    <origin xyz="-35 0 12.5"/>
+  </joint>
+
+  <link name="wave3">
+    <visual><geometry><box size="5 60 15"/></geometry><material name="wave_blue"/></visual>
+  </link>
+  <joint name="w_to_wave3" type="fixed">
+    <parent link="world"/><child link="wave3"/>
+    <origin xyz="-25 0 7.5"/>
+  </joint>
+
+  <link name="ranger_body">
+    <visual><geometry><box size="3 1.5 0.4"/></geometry><material name="ship_grey"/></visual>
+  </link>
+  <joint name="world_to_ranger" type="fixed">
+    <parent link="world"/><child link="ranger_body"/>
+    <origin xyz="5 8 0.5"/>
+  </joint>
+
+  <link name="ranger_wing_l">
+    <visual><geometry><box size="1.5 1.5 0.1"/></geometry><material name="ship_grey"/></visual>
+  </link>
+  <joint name="r_to_wl" type="fixed">
+    <parent link="ranger_body"/><child link="ranger_wing_l"/>
+    <origin xyz="0 1.5 0"/>
+  </joint>
+
+  <link name="ranger_wing_r">
+    <visual><geometry><box size="1.5 1.5 0.1"/></geometry><material name="ship_grey"/></visual>
+  </link>
+  <joint name="r_to_wr" type="fixed">
+    <parent link="ranger_body"/><child link="ranger_wing_r"/>
+    <origin xyz="0 -1.5 0"/>
+  </joint>
+ 
+
+ 
+</robot>
